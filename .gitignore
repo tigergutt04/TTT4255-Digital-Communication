@@ -1,0 +1,18 @@
+# Virtual environments
+.venv/
+venv/
+
+# Revorded data
+*.bin
+
+# Compiled C files
+*.o
+rasberry-pi/c/adc_sampler
+
+# IDE
+.vscode/
+.idea/
+
+# OS files
+.DS_store
+Thumbs.db
