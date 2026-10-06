@@ -4,6 +4,8 @@ const int BUZZER_PIN = 25;
 const int ZERO_HZ = 500;
 const int ONE_HZ = 4000;
 const int BIT_DURATION_MS = 20;
+// Barker-13: +1 maps to bit 1, -1 maps to bit 0. Matches main.py.
+const uint8_t START_SIGNAL[] = {1, 1, 1, 1, 1, 0, 0, 1, 1, 0, 1, 0, 1};
 
 void sendBit(bool bit) {
     tone(BUZZER_PIN, bit ? ONE_HZ : ZERO_HZ);
@@ -18,6 +20,9 @@ void sendByte(uint8_t value) {
 }
 
 void sendMessage(const char* message) {
+    for (uint8_t bit : START_SIGNAL) {
+        sendBit(bit);
+    }
     while(*message) {
         sendByte(static_cast<uint8_t>(*message));
         ++message;
@@ -30,6 +35,6 @@ void setup() {
 }
 
 void loop() {
-    sendMessage("Hi");
+    sendMessage("Hello");
     delay(2000);
 }
