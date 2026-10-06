@@ -5,6 +5,8 @@ const int ZERO_HZ = 500;
 const int ONE_HZ = 4000;
 const int BIT_DURATION_MS = 20;
 
+const uint8_t START_SIGNAL = {1, 1, 0, 0, 1, 1}
+
 void sendBit(bool bit) {
     tone(BUZZER_PIN, bit ? ONE_HZ : ZERO_HZ);
     delay(BIT_DURATION_MS);
@@ -18,7 +20,12 @@ void sendByte(uint8_t value) {
 }
 
 void sendMessage(const char* message) {
-    while(*message) {
+    // Send Barker-startsekvensen før teksten.
+    for (uint8_t bit : START_SIGNAL) {
+        sendBit(bit);
+    }
+
+    while (*message) {
         sendByte(static_cast<uint8_t>(*message));
         ++message;
     }
@@ -30,6 +37,6 @@ void setup() {
 }
 
 void loop() {
-    sendMessage("Hi");
+    sendMessage("Hello");
     delay(2000);
 }
