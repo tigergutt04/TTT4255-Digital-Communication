@@ -10,8 +10,8 @@ from lib.raspi_import import raspi_import
 # ===== INNSTILLINGER =====
 
 # TODO: (1) Tilpass innstillingene til meldingen dere sender.
-F0 = 1200          # Frekvens for bit 0 i Hz
-F1 = 2200          # Frekvens for bit 1 i Hz
+F0 = 500          # Frekvens for bit 0 i Hz
+F1 = 4000          # Frekvens for bit 1 i Hz
 BIT_TIME = 0.2     # Varighet per bit i sekunder
 
 START_SIGNAL = [1, 1, 1, 0, 1]  # Bitsekvens som markerer meldingens start
@@ -22,7 +22,7 @@ OUTPUT_FILE = 'recording.bin'  # Filen opptaket lagres i
 
 SAMPLE_RATE = 31250  # Hz, IKKE ENDRE.
 
-# ===== OPPTAK OG INNLESING =====
+# ===== OPPTAK OG INNLESING =====   
 
 num_samples = int(DURATION * SAMPLE_RATE)
 subprocess.run(
@@ -39,7 +39,8 @@ signal = data[:, 0]                 # Hent målingene fra første kanal
 
 # TODO: (2) Kall fsk_decoder() og lagre resultatet i bits.
 # Se parameterbeskrivelsene i funksjonen.
+bits = fsk_decoder(signal, sample_rate, F0, F1, BIT_TIME, start_signal=START_SIGNAL, message_length=40)
 
 # TODO: (3) Skriv ut bits og sammenlign med meldingen dere sendte.
-
+print(bits)
 # ===== SLUTT PÅ OPPGAVE =====
