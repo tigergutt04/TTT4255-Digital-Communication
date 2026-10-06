@@ -6,6 +6,7 @@ const int ONE_HZ = 2200;
 const int BIT_DURATION_MS = 200;
 
 const uint8_t START_SIGNAL[] = {1, 1, 0, 0, 1, 1};
+const uint8_t STOP_SIGNAL[] = {1, 1, 0, 0, 1, 1};
 
 void sendBit(bool bit) {
     tone(BUZZER_PIN, bit ? ONE_HZ : ZERO_HZ);
@@ -29,6 +30,10 @@ void sendMessage(const char* message) {
         sendByte(static_cast<uint8_t>(*message));
         ++message;
     }
+
+    for (uint8_t bit : STOP_SIGNAL){
+        sendBit(bit);
+    }
     noTone(BUZZER_PIN);
 }
 
@@ -39,4 +44,5 @@ void setup() {
 void loop() {
     sendMessage("Hello");
     delay(2000);
+
 }
