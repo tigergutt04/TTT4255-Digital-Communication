@@ -22,7 +22,7 @@ OUTPUT_FILE = 'recording.bin'  # Filen opptaket lagres i
 
 SAMPLE_RATE = 31250  # Hz, IKKE ENDRE.
 
-# ===== OPPTAK OG INNLESING =====
+# ===== OPPTAK OG INNLESING =====   
 
 num_samples = int(DURATION * SAMPLE_RATE)
 subprocess.run(
@@ -39,7 +39,8 @@ signal = data[:, 0]                 # Hent målingene fra første kanal
 
 # TODO: (2) Kall fsk_decoder() og lagre resultatet i bits.
 # Se parameterbeskrivelsene i funksjonen.
+bits = fsk_decoder(signal, sample_rate, F0, F1, BIT_TIME, start_signal=START_SIGNAL, message_length=40)
 
 # TODO: (3) Skriv ut bits og sammenlign med meldingen dere sendte.
-
+print(bits)
 # ===== SLUTT PÅ OPPGAVE =====
