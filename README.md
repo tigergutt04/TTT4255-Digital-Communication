@@ -35,30 +35,4 @@ The microphone converts the sound into an analog electrical signal. The MCP3001 
 
 The Raspberry Pi records the signal and decodes the transmitted FSK message. :chatgpt-content-reference{index="3"}
 
----
 
-## Repository structure
-
-```text
-TTT4255-Digital-Communication/
-│
-├── README.md
-├── .gitignore
-│
-├── esp32/
-│   └── sender/
-│       └── sender.ino
-│
-├── raspberry-pi/
-│   ├── main.py
-│   ├── requirements.txt
-│   │
-│   ├── c/
-│   │   ├── adc_sampler.c
-│   │   └── Makefile
-│   │
-│   └── lib/
-│       ├── raspi_import.py
-│       └── fsk_decoder.py
-│
-└── docs/
