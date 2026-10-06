@@ -1,11 +1,11 @@
 #include <Arduino.h>
 
-const int BUZZER_PIN = 25;
-const int ZERO_HZ = 500;
-const int ONE_HZ = 4000;
-const int BIT_DURATION_MS = 20;
+const int BUZZER_PIN = 14;
+const int ZERO_HZ = 1200;
+const int ONE_HZ = 2200;
+const int BIT_DURATION_MS = 200;
 
-const uint8_t START_SIGNAL = {1, 1, 0, 0, 1, 1}
+const uint8_t START_SIGNAL[] = {1, 1, 0, 0, 1, 1};
 
 void sendBit(bool bit) {
     tone(BUZZER_PIN, bit ? ONE_HZ : ZERO_HZ);
