@@ -10,8 +10,8 @@ from lib.raspi_import import raspi_import
 # ===== INNSTILLINGER =====
 
 # TODO: (1) Tilpass innstillingene til meldingen dere sender.
-F0 = 1200          # Frekvens for bit 0 i Hz
-F1 = 2200          # Frekvens for bit 1 i Hz
+F0 = 500          # Frekvens for bit 0 i Hz
+F1 = 4000          # Frekvens for bit 1 i Hz
 BIT_TIME = 0.2     # Varighet per bit i sekunder
 
 START_SIGNAL = [1, 1, 1, 0, 1]  # Bitsekvens som markerer meldingens start
