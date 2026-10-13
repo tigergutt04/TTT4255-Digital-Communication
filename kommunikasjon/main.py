@@ -49,4 +49,23 @@ print("Bits:", ''.join(str(b) for b in bits))
 
 #TODO: (4) Dekod bits til tekst og skriv ut meldingen.
 
+# Lager en hjelpefunksjon som splitter strengen med bits
+def split_string_every_8th(string: str) -> list[str]:
+    bits_split = []
+    for i in range(0, len(string), 8):
+        bits_split.append(string[i:i + 8])
+        return bits_split
+
+def decode_bits(string: str) -> str:
+    if len(string) % 8 != 0:
+        raise ValueError("Antall bit må være delelig med 8")
+
+    bit_groups = split_string_every_8th(string)
+    byte_values = bytes(int(group, 2) for group in bit_groups)
+    return byte_values.decode("utf-8")
+
+bit_string = ''.join(str(bit) for bit in bits)
+print(decode_bits(bit_string))
+
+
 # ===== SLUTT PÅ OPPGAVE =====
