@@ -144,6 +144,8 @@ def fsk_decoder(signal, sample_rate, f0, f1, bit_time,
                 bits = bits[:index]
                 break
         else:
+            print("start funnet ved sample:", _, "av", len(signal) + end)
+            print("bits:", ''.join(map(str, bits[:80])))
             raise ValueError("Stoppsekvensen ble ikke funnet")
 
 
