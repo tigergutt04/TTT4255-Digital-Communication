@@ -10,15 +10,15 @@ from lib.raspi_import import raspi_import
 # ===== INNSTILLINGER =====
 
 # TODO: (1) Tilpass innstillingene til meldingen dere sender.
-F0 = 1200          # Frekvens for bit 0 i Hz
-F1 = 2200          # Frekvens for bit 1 i Hz
+F0 = 3600          # Frekvens for bit 0 i Hz
+F1 = 4400          # Frekvens for bit 1 i Hz
 BIT_TIME = 0.2     # Varighet per bit i sekunder
 
-START_SIGNAL = [1, 1, 0, 0, 1, 1]    # Bitsekvens som markerer meldingens start
-STOP_SIGNAL = [1, 1, 0, 0, 1, 1,]
+START_SIGNAL = [1,0,1,0,1,0,1,1,0,0,1,1]    # Bitsekvens som markerer meldingens start
+STOP_SIGNAL = [1, 1,1,1,1,1,1,1]
 MESSAGE_LENGTH = None                   # Antall bit uten startsekvens, eller None hvis ukjent
 
-DURATION = 15                   # Opptakslengde i sekunder
+DURATION = 30                   # Opptakslengde i sekunder
 OUTPUT_FILE = 'recording.bin'   # Filen opptaket lagres i
 
 SAMPLE_RATE = 31250  # Hz, IKKE ENDRE.
