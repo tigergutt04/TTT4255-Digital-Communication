@@ -38,11 +38,21 @@ void sendMessage(const char* message) {
 }
 
 void setup() {
-    pinMode(BUZZER_PIN, OUTPUT);   
+    pinMode(BUZZER_PIN, OUTPUT);
+    Serial.begin(9600);   
 }
+
+//void loop() {
+//    sendMessage("Hello");
+//    delay(2000);
+//
+//}
 
 void loop() {
-    sendMessage("Hello");
-    delay(2000);
-
-}
+   if (Serial.available() > 0) { 
+        // Arduinoen venter på at DU skriver noe i Serial Monitor på PC-en
+        String melding = Serial.readString(); 
+        melding.trim();
+        sendMessage(melding.c_str());
+        delay(2000);
+   }}
